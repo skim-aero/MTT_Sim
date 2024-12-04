@@ -63,16 +63,20 @@ x2 = zeros(1,length(t));
 y2 = zeros(1,length(t));
 
 x1(1) = 0; y1(1) = 0; x2(1) = 0; y2(1) = 3000; % departure position
-vx1 = 2; ax1 = 0; vy1 = 0.2; ay1 = 0.01; % x&y velocity and acceleration
-vx2 = 2; ax2 = 0; vy2 = -2; ay2 = 0.05; % x&y velocity and acceleration
+vx1 = 100; ax1 = 0; vy1 = 15; ay1 = 0.2; % x&y velocity and acceleration
+vx2 = 100; ax2 = 0; vy2 = -70; ay2 = 1; % x&y velocity and acceleration
 
 % Trajectory generation by a constant acc motion
 for i = 1:length(t)-1
-    x1(i+1) = x1(i)+vx1*t(i)+0.5*ax1*t(i)^2;
-    y1(i+1) = y1(i)+vy1*t(i)+0.5*ay1*t(i)^2;
+    x1(i+1) = x1(i)+vx1*T+0.5*ax1*T^2;
+    vx1 = vx1+ax1*T;
+    y1(i+1) = y1(i)+vy1*T+0.5*ay1*T^2;
+    vy1 = vy1+ay1*T;
 
-    x2(i+1) = x2(i)+vx2*t(i)+0.5*ax2*t(i)^2;
-    y2(i+1) = y2(i)+vy2*t(i)+0.5*ay2*t(i)^2;
+    x2(i+1) = x2(i)+vx2*T+0.5*ax2*T^2;
+    vx2 = vx2+ax2*T;
+    y2(i+1) = y2(i)+vy2*T+0.5*ay2*T^2;
+    vy2 = vy2+ay2*T;
 end
 
 for it = 1:iter

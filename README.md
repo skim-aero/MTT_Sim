@@ -15,3 +15,4 @@ For the detail of the JPDA, please refer to the paper follows:
 * 12th Jun 2023 Beta 0.0: First commit
 * 11th Nov 2024 Release 1.0: First public
 * 12th Nov 2024 Release 1.1: Minor modifications
+*  4th Dec 2024 Release 1.2: Equation update
